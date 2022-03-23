@@ -25,25 +25,31 @@ void create(int arr[],int count)
     }
 }
 
-//checking the linked list sorted or not using recursion
-bool checkSort(struct node *p)
+void removeDuplicate(struct node *p)
 {
-    if(p->next!=NULL)
+    if(p!=NULL)
     {
-        
-        if(p->data>p->next->data)
-            return false;
-        checkSort(p->next);
+        if(p->next!=NULL)
+        {
+            if(p->data==p->next->data)
+            {
+                struct node *temp;
+                temp=new node;
+                temp=p->next;
+                p->next=temp->next;
+                delete temp;
+            }
+        }
+        cout<<p->data<<endl;
+        removeDuplicate(p->next);
     }
-    else
-        return true;
 }
 
 
 int main()
 {
-    int arr[]={2,4,6,8,9,8,10};
+    int arr[]={2,4,6,8,9,9,10};
     create(arr,7);
-    cout<<checkSort(first);
+    removeDuplicate(first);
     return 0;
 }

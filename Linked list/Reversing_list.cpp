@@ -25,25 +25,32 @@ void create(int arr[],int count)
     }
 }
 
-//checking the linked list sorted or not using recursion
-bool checkSort(struct node *p)
+void display(struct node *p)
 {
-    if(p->next!=NULL)
+    while (p!=NULL)
     {
-        
-        if(p->data>p->next->data)
-            return false;
-        checkSort(p->next);
+        cout<<p->data<<endl;
+        p=p->next;
     }
-    else
-        return true;
 }
 
+//reverse function using recursion
+void reverse(struct node *p,struct node *q)  //'p' storing current element and 'q' storing previous element
+{
+    if(p!=NULL)
+    {
+        reverse(p->next,p);   
+        p->next=q;
+    }
+    else
+        first=q;   
+}
 
 int main()
 {
-    int arr[]={2,4,6,8,9,8,10};
+    int arr[]={2,4,6,8,9,10,11};
     create(arr,7);
-    cout<<checkSort(first);
+    reverse(first,NULL);
+    display(first);
     return 0;
 }
