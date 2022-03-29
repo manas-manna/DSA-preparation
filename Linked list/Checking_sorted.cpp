@@ -42,8 +42,9 @@ bool checkSort(struct node *p)
 
 int main()
 {
-    int arr[]={2,4,6,8,9,8,10};
+    int arr[]={2,4,6,8,9,9,10};
     create(arr,7);
-    cout<<checkSort(first);
+    bool a=checkSort(first);
+    cout<<a;
     return 0;
 }
